@@ -18,8 +18,15 @@ module.exports = {
   // If the file path matches any of the patterns, coverage information will be skipped.
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
 
+  transform: {
+    // 使用 ts-jest 转换 ts 代码。 ts 文件路径匹配 "^.+\\.tsx?$" 的，才会被转换。
+    '^.+\\.tsx?$': 'ts-jest',
+    // 使用 babel-jest 转换 js 代码。 js 文件路径匹配 "^.+\\.jsx?$" 的，才会被转换
+    '^.+\\.jsx?$': 'babel-jest',
+  },
+
   // The pattern Jest uses to detect test files.
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
 
   // This option sets the URL for the jsdom environment.
   // It is reflected in properties such as location.href.
