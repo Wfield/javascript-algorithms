@@ -4,9 +4,12 @@
   "description": "Algorithms and data-structures implemented on JavaScript",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./src/*",
+    "lint": "eslint ./src/**/*.js",
     "test": "jest",
-    "ci": "npm run lint && npm run test -- --coverage"
+    "ci": "npm run lint && npm run test -- --coverage",
+    "exec": "./node_modules/.bin/babel-node",
+    "ts": "cd src/playground & tsc --lib es6",
+    "tsr": "npm run exec"
   },
   "repository": {
     "type": "git",
@@ -34,6 +37,7 @@
   "homepage": "https://github.com/trekhleb/javascript-algorithms#readme",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
+    "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.4.5",
     "@types/jest": "^24.0.15",
     "eslint": "^6.0.1",

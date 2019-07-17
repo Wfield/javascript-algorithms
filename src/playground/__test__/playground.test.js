@@ -1,5 +1,7 @@
+import sum from '../playground';
+
 describe('playground', () => {
-  it('should perform playground tasks', () => {
-    // Place your playground tests here.
+  it('adds 1 + 2 to equal 3', () => {
+    expect(sum(1, 2)).toBe(3);
   });
 });
