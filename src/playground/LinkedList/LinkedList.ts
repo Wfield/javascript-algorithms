@@ -7,6 +7,8 @@ export default class LinkedList {
   compare: Comparator;
 
   constructor(comparatorFunction?: any) {
+    this.head = null;
+    this.tail = null;
     this.compare = new Comparator(comparatorFunction);
   }
 
@@ -143,7 +145,7 @@ export default class LinkedList {
     return nodes;
   }
 
-  toString(callback: any) {
+  toString(callback?: any) {
     return this.toArray().map(node => node.toString(callback)).toString();
   }
 

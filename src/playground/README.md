@@ -9,3 +9,9 @@ To run tests simply run:
 ```
 npm test -- -t 'playground'
 ```
+# 运行 jest
+npm run test LinkedList/__test__/LinkedListNode.test.ts
+# 编译 ts
+npm run ts DoublyLinkedList/DoublyLinkedList.ts
+# 运行编译后的文件
+npm run exec src/playground/DoublyLinkedList/DoublyLinkedList.js

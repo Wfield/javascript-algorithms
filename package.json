@@ -6,11 +6,9 @@
   "scripts": {
     "lint": "eslint ./src/**/*.js",
     "test": "jest",
-    "tsj": "cd src/playground & ts-jest",
     "ci": "npm run lint && npm run test -- --coverage",
     "exec": "./node_modules/.bin/babel-node",
-    "ts": "cd src/playground & tsc --lib es6",
-    "tsr": "npm run exec"
+    "ts": "cd src/playground & tsc --lib es6"
   },
   "repository": {
     "type": "git",
