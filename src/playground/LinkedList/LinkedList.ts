@@ -12,24 +12,25 @@ export default class LinkedList {
     this.compare = new Comparator(comparatorFunction);
   }
 
-  prepend(value: string) {
+  prepend(value: string): LinkedListNode {
     const newNode = new LinkedListNode(value, this.head);
     this.head = newNode;
     if(!this.tail) {
       this.tail = newNode;
     }
-    return this;
+    return newNode;
   }
 
-  append(value: string) {
+  append(value: string): LinkedListNode {
     const newNode = new LinkedListNode(value);
     if(!this.head) {
       this.head = newNode;
       this.tail = newNode;
-      return this;
     }
     this.tail.next = newNode;
     this.tail = newNode
+    
+    return newNode;
   }
 
   delete(value: string) {
@@ -108,7 +109,7 @@ export default class LinkedList {
     return deleteTail;
   }
 
-  deleteHead() {
+  deleteHead(): LinkedListNode {
     if(!this.head) {
       return null;
     }
@@ -130,9 +131,9 @@ export default class LinkedList {
     return this;
   }
 
-  toArray() {
+  toArray(): any[] {
     if(!this.head) {
-      return null;
+      return [];
     }
 
     let currentNode = this.head;
@@ -146,7 +147,7 @@ export default class LinkedList {
   }
 
   toString(callback?: any) {
-    return this.toArray().map(node => node.toString(callback)).toString();
+    return this.toArray().map(node => node.toString()).toString();
   }
 
   reverse() {
