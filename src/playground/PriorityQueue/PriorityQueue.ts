@@ -1,7 +1,7 @@
-import MinHeap from '../Heap/MinHeap';
+import MaxHeap from '../Heap/MaxHeap';
 import Comparator from '../../utils/comparator/Comparator';
 
-export default class PriorityQueue extends MinHeap {
+export default class PriorityQueue extends MaxHeap {
 
   priorities: Map<any, number>;
   compare: Comparator;
@@ -17,7 +17,7 @@ export default class PriorityQueue extends MinHeap {
 
   add(item:any, priority:number = 0):PriorityQueue {
     this.priorities.set(item, priority);
-    this.add(item);
+    super.add(item);
     return this;
   }
 

@@ -114,7 +114,7 @@ export default class Heap {
 
     for(let itemIndex = 0; itemIndex < this.heapContainer.length; itemIndex ++) {
       if(comparator.equal(item, this.heapContainer[itemIndex])) {
-        findItemIndics.push(this.heapContainer[itemIndex]);
+        findItemIndics.push(itemIndex);
       }
     }
 
@@ -149,7 +149,7 @@ export default class Heap {
     let nextIndex = null;
 
     while(this.hasLeftChild(currentIndex)) {
-      if(this.hasRightChild(currentIndex) && this.pairIsInCorrectOrder(this.rightChild, this.leftChild)) {
+      if(this.hasRightChild(currentIndex) && this.pairIsInCorrectOrder(this.rightChild(currentIndex), this.leftChild(currentIndex))) {
         nextIndex = this.getRightChildIndex(currentIndex);
       } else {
         nextIndex = this.getLeftChildIndex(currentIndex);
@@ -174,6 +174,7 @@ export default class Heap {
    * @return {boolean}
    */
   pairIsInCorrectOrder(firstElement, secondElement):boolean {
+    console.log('heap');
     return this.comparator.lessThanOrEqual(firstElement, secondElement);
   }
 }
