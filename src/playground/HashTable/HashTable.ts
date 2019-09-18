@@ -36,17 +36,16 @@ export default class HashTable {
     }
   }
 
-  delete(key: string):void {
+  delete(key: string):any {
     const keyHash = this.hash(key);
     delete this.keys[key];
-
     const bucketLinkedList = this.buckets[keyHash];
     const node = bucketLinkedList.find({ callback: nodeValue => nodeValue.key === key });
-
-    if(node) {
-      bucketLinkedList.delete(node.value);
+    if (node) {
+      return bucketLinkedList.delete(node.value);
     }
 
+    return null;
   }
 
   get(key: string):any {
@@ -58,7 +57,7 @@ export default class HashTable {
       return undefined;
     }
 
-    return node.value;
+    return node.value.value;
   }
 
   has(key: string):boolean {

@@ -21,8 +21,7 @@ export default class TrieNode {
       this.children.set(character, new TrieNode(character, isCompleteWord));
     }
 
-    const childNode = this.getChild(character);
-
+    const childNode = this.children.get(character);
     childNode.isComplete = childNode.isComplete || isCompleteWord;
 
     return childNode;
@@ -34,7 +33,7 @@ export default class TrieNode {
     // Delete childNode only if:
     // - childNode has NO children,
     // - childNode.isCompleteWord === false.
-    if(childNode && !childNode.isComplete && !childNode.children) {
+    if(childNode && !childNode.isComplete && !childNode.hasChildren()) {
       this.children.delete(character);
     }
 
@@ -54,10 +53,9 @@ export default class TrieNode {
   }
 
   toString():string {
-    let childrenAsString = this.suggestChildren.toString();
+    let childrenAsString = this.suggestChildren().toString();
     childrenAsString = childrenAsString ? `:${childrenAsString}` :'';
     const isCompleteString = this.isComplete ? '*' : '';
-
     return `${this.character}${isCompleteString}${childrenAsString}`;
   }
 }

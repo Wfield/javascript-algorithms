@@ -5,7 +5,7 @@ export default class BinarySearchTree {
   root: BinarySearchTreeNode;
   nodeComparator: any;
 
-  constructor(nodeValueCompareFunction) {
+  constructor(nodeValueCompareFunction = undefined) {
     this.root = new BinarySearchTreeNode(null, nodeValueCompareFunction);
 
     this.nodeComparator = this.root.nodeComparator;

@@ -36,35 +36,39 @@ export default class LinkedList {
   }
 
   delete(value: any) {
-    if(!this.head) {
+    if (!this.head) {
       return null;
     }
 
-    let deleteNode = null;
-    while(this.head && this.compare.equal(this.head.value, this.head)) {
-      deleteNode = this.head;
+    let deletedNode = null;
+
+    // If the head must be deleted then make next node that is differ
+    // from the head to be a new head.
+    while (this.head && this.compare.equal(this.head.value, value)) {
+      deletedNode = this.head;
       this.head = this.head.next;
     }
 
     let currentNode = this.head;
 
-    if(currentNode !== null) {
-      while(currentNode.next) {
-        if(currentNode.next && this.compare.equal(currentNode.next.value, currentNode)){
-          deleteNode = currentNode.next;
+    if (currentNode !== null) {
+      // If next node must be deleted then make next node to be a next next one.
+      while (currentNode.next) {
+        if (this.compare.equal(currentNode.next.value, value)) {
+          deletedNode = currentNode.next;
           currentNode.next = currentNode.next.next;
-          break;
         } else {
           currentNode = currentNode.next;
         }
       }
     }
 
-    if(this.compare.equal(this.tail.value, value)) {
+    // Check if tail must be deleted.
+    if (this.compare.equal(this.tail.value, value)) {
       this.tail = currentNode;
     }
 
-    return deleteNode;
+    return deletedNode;
   }
   
   find({ value, callback}: { value?: any, callback: any }) {

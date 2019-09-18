@@ -3,20 +3,24 @@ import BinarySearchTreeNode from '../BinarySearchTree/BinarySearchTreeNode';
 
 export default class AvlTree extends BinarySearchTree {
 
-  insert(value:any):void {
-    super.insert(value);
+  insert(value:any):BinarySearchTreeNode {
+    let insertValue = super.insert(value);
 
     let currentNode = this.root.find(value);
     while(currentNode) {
       this.balance(currentNode);
       currentNode = currentNode.parent;
     }
+
+    return insertValue;
   }
 
-  remove(value:any):void {
-    super.remove(value);
+  remove(value:any):boolean {
+    let removeFlag = super.remove(value);
 
     this.balance(this.root);
+
+    return removeFlag;
   }
 
   balance(node:BinarySearchTreeNode):void {

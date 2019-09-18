@@ -59,7 +59,7 @@ export default class Trie {
     return lastCharacter.suggestChildren();
   }
 
-  doseWordExist(word:string):boolean {
+  doesWordExist(word:string):boolean {
     const lastCharacter = this.getLastCharacterNode(word);
 
     return !!lastCharacter && lastCharacter.isComplete;
